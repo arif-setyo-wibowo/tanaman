@@ -14,7 +14,11 @@ class PenanamanController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Penanaman'
+        ];
+
+        return view('tanaman.penanaman',$data);
     }
 
     /**

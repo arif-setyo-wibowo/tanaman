@@ -14,7 +14,11 @@ class LoginController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Login'
+        ];
+
+        return view('tanaman.login',$data);
     }
 
     /**

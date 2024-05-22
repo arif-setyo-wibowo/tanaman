@@ -14,7 +14,11 @@ class BagianController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Bagian'
+        ];
+
+        return view('tanaman.bagian',$data);
     }
 
     /**

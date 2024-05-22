@@ -14,7 +14,11 @@ class KebunController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Kebun'
+        ];
+
+        return view('tanaman.kebun',$data);
     }
 
     /**

@@ -14,7 +14,11 @@ class TanamanController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Tanaman'
+        ];
+
+        return view('tanaman.tanaman',$data);
     }
 
     /**

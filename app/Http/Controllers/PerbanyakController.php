@@ -14,7 +14,11 @@ class PerbanyakController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Perbanyak'
+        ];
+
+        return view('tanaman.perbanyak',$data);
     }
 
     /**

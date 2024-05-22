@@ -14,7 +14,11 @@ class GambarController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Gambar'
+        ];
+
+        return view('tanaman.gambar',$data);
     }
 
     /**

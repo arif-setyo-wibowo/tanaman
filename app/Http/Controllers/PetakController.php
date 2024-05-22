@@ -14,7 +14,11 @@ class PetakController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Petak'
+        ];
+
+        return view('tanaman.petak',$data);
     }
 
     /**

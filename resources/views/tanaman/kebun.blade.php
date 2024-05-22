@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="tab-tambah-edit" role="tabpanel"
                                     aria-labelledby="custom-tab-tambah-edit">
-                                    <form action="{{ route('post') }}" method="POST">
+                                    <form action="" method="POST">
                                         @csrf
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">ID</label>

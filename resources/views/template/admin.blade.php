@@ -85,7 +85,7 @@
           </li>
           <li class="nav-header">Data</li>
           <li class="nav-item">
-             <a href="{{route('bagian')}}" @if ($title == 'Bagian') class="nav-link active" @else class="nav-link" @endif>
+             <a href="{{route('admin.bagian')}}" @if ($title == 'Bagian') class="nav-link active" @else class="nav-link" @endif>
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Bagian
@@ -93,7 +93,7 @@
             </a>
           </li>
           <li class="nav-item">
-             <a href="{{ route('gambar')}}" @if ($title == 'Gambar') class="nav-link active" @else class="nav-link" @endif>
+             <a href="{{ route('admin.gambar')}}" @if ($title == 'Gambar') class="nav-link active" @else class="nav-link" @endif>
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Gambar
@@ -101,7 +101,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('kebun')}}" @if ($title == 'Kebun') class="nav-link active" @else class="nav-link" @endif>
+            <a href="{{ route('admin.kebun')}}" @if ($title == 'Kebun') class="nav-link active" @else class="nav-link" @endif>
              <i class="nav-icon fas fa-columns"></i>
              <p>
                Kebun
@@ -109,7 +109,7 @@
            </a>
          </li>
          <li class="nav-item">
-          <a href="{{ route('penanaman')}}" @if ($title == 'Penanaman') class="nav-link active" @else class="nav-link" @endif>
+          <a href="{{ route('admin.penanaman')}}" @if ($title == 'Penanaman') class="nav-link active" @else class="nav-link" @endif>
            <i class="nav-icon fas fa-columns"></i>
            <p>
              Penanaman
@@ -117,7 +117,7 @@
          </a>
        </li>
        <li class="nav-item">
-          <a href="{{ route('perbanyak')}}" @if ($title == 'Perbanyak') class="nav-link active" @else class="nav-link" @endif>
+          <a href="{{ route('admin.perbanyak')}}" @if ($title == 'Perbanyak') class="nav-link active" @else class="nav-link" @endif>
            <i class="nav-icon fas fa-columns"></i>
            <p>
              Perbanyak
@@ -125,7 +125,7 @@
          </a>
        </li>
        <li class="nav-item">
-          <a href="{{ route('petak')}}" @if ($title == 'Petak') class="nav-link active" @else class="nav-link" @endif>
+          <a href="{{ route('admin.petak')}}" @if ($title == 'Petak') class="nav-link active" @else class="nav-link" @endif>
            <i class="nav-icon fas fa-columns"></i>
            <p>
              Petak
@@ -133,16 +133,24 @@
          </a>
        </li>
        <li class="nav-item">
-          <a href="{{ route('tanaman')}}" @if ($title == 'Tanaman') class="nav-link active" @else class="nav-link" @endif>
+          <a href="{{ route('admin.tanaman')}}" @if ($title == 'Tanaman') class="nav-link active" @else class="nav-link" @endif>
            <i class="nav-icon fas fa-columns"></i>
            <p>
              Tanaman
            </p>
          </a>
        </li>
+       <li class="nav-item">
+          <a href="{{ route('admin.petugas')}}" @if ($title == 'User') class="nav-link active" @else class="nav-link" @endif>
+          <i class="nav-icon fas fa-columns"></i>
+          <p>
+            User
+          </p>
+        </a>
+      </li>
          
         <li class="nav-item">
-          <a href="{{ route('logout')}}" @if ($title == 'Logout') class="nav-link active" @else class="nav-link" @endif>
+          <a href="{{ route('admin.logout')}}" @if ($title == 'Logout') class="nav-link active" @else class="nav-link" @endif>
            <i class="nav-icon fas fa-user"></i>
            <p>
              Logout
