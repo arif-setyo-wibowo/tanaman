@@ -12,6 +12,11 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PetugasController;
 use Illuminate\Support\Facades\Route;
 
+Route::controller(DashboardController::class)->group(function () {
+    Route::get('/', 'front')->name('front');
+    Route::get('/detail', 'detail')->name('detail');
+});
+
 Route::controller(DashboardController::class)->prefix('/admin')->group(function () {
     Route::get('/', 'index')->name('dashboard');
 });
