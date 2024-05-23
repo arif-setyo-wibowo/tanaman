@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Bagian;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class BagianController extends Controller
 {
@@ -14,76 +16,53 @@ class BagianController extends Controller
      */
     public function index()
     {
+        $bagian = Bagian::all();
+        $title = 'Bagian';
+
+        return view('tanaman.bagian', compact('bagian','title'));
+    }
+
+     public function store(Request $request)
+    {
+        $bagian = new Bagian;
+        $bagian->NAMA = $request->nama;
+        $bagian->save();
+        Session::flash('msg', 'Berhasil Menambah Data Bagian');
+        return redirect()->route('bagian.index');
+        
+    }
+
+    public function edit($id){
         $data = [
-            'title' => 'Bagian'
+            'bagian' => Bagian::find($id),
+            'title' => 'Edit'
         ];
-
-        return view('tanaman.bagian',$data);
+        return view('tanaman.bagian_edit',$data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function update(Request $request){
+
+        $idBagian = $request->idbagian;
+        $namaBaru = $request->nama;
+
+        DB::table('bagian')
+            ->where('ID', $idBagian)
+            ->update(['NAMA' => $namaBaru]);
+
+        Session::flash('msg', 'Berhasil Mengubah Data Bagian');
+
+        return redirect()->route('bagian.index');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Bagian  $bagian
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Bagian $bagian)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Bagian  $bagian
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Bagian $bagian)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Bagian  $bagian
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Bagian $bagian)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Bagian  $bagian
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Bagian $bagian)
-    {
-        //
+        try {
+            DB::table('bagian')->where('ID', $id)->delete();
+            Session::flash('msg', 'Berhasil Menghapus Data Bagian');
+        } catch (\Exception $e) {
+            Session::flash('error', 'Gagal menghapus data Bagian. Data tersebut masih digunakan dalam tabel lain.');
+        }
+        
+        return redirect()->route('bagian.index');
     }
 }

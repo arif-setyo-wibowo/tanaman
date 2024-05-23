@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Gambar extends Model
 {
     use HasFactory;
+    protected $table = 'gambar';
+    protected $primary = 'ID';
+    public $timestamps = false;
 }

@@ -1,6 +1,11 @@
+// Dismiss Alert
+setTimeout(function() {
+    document.getElementById("autoDismissAlert").style.display = "none";
+}, 3000);
+
 function editBagian(id, nama) {
     $('[href="#tab-tambah-edit"]').tab("show");
-    $("#id").val(id).prop('readonly', true);
+    $("#idbagian").val(id);
     $("#nama").val(nama);
     $("#proses").val("Update");
 }
@@ -47,10 +52,6 @@ function editTanaman(id, nama) {
     $("#proses").val("Update");
 }
 
-// Dismiss Alert
-setTimeout(function() {
-    document.getElementById("autoDismissAlert").style.display = "none";
-}, 3000);
 
 // Edit Kategori
 function editPasien(id, nama, jk, tgl, alamat) {
@@ -98,13 +99,13 @@ $("#tambah-edit-tab").on("click", function() {
 });
 
 // Edit Rontgen
-function editRontgen(no, id_pasien, tgl, jenis, detail,nama) {
+function editRontgen(no, id_pasien, tgl, jenis, detail, nama) {
     $('[href="#tab-tambah-edit"]').tab("show");
     $("#idpemeriksaan").val(no).prop('readonly', true);
     document.getElementById("text-pasien").style.display = "";
     document.getElementById("idpasienselect").style.display = "none";
     document.getElementById("pasien").style.display = "";
-    $("#pasien").prop("type", "text").prop("readonly", true).val(id_pasien+' - '+nama);
+    $("#pasien").prop("type", "text").prop("readonly", true).val(id_pasien + ' - ' + nama);
     $("#tgl_pemeriksaan").val(tgl);
     $("#jenis_pemeriksaan").val(jenis);
     $("#detail_pemeriksaan").val(detail);

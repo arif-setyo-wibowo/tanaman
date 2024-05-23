@@ -15,7 +15,8 @@ class GambarController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Gambar'
+            'title' => 'Gambar',
+            'gambar' => Gambar::all()
         ];
 
         return view('tanaman.gambar',$data);

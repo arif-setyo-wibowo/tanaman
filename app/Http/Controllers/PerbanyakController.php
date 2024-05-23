@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Perbanyak;
+use App\Models\Tanaman;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 
 class PerbanyakController extends Controller
 {
@@ -15,7 +19,8 @@ class PerbanyakController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Perbanyak'
+            'title' => 'Perbanyak',
+            'perbanyak' => Perbanyak::all()
         ];
 
         return view('tanaman.perbanyak',$data);
@@ -39,7 +44,11 @@ class PerbanyakController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $perbanyak = new Perbanyak;
+        $perbanyak->NAMA = $request->nama;
+        $perbanyak->save();
+        Session::flash('msg', 'Berhasil Tambah Data Perbanyak');
+        return redirect()->route('perbanyak.index');
     }
 
     /**
@@ -59,9 +68,11 @@ class PerbanyakController extends Controller
      * @param  \App\Models\Perbanyak  $perbanyak
      * @return \Illuminate\Http\Response
      */
-    public function edit(Perbanyak $perbanyak)
+    public function edit($id)
     {
-        //
+        $data['perbanyak'] = Perbanyak::find($id);
+        $data['title'] = 'Edit';
+        return view('tanaman.perbanyak_edit',$data);
     }
 
     /**
@@ -71,9 +82,18 @@ class PerbanyakController extends Controller
      * @param  \App\Models\Perbanyak  $perbanyak
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Perbanyak $perbanyak)
+    public function update(Request $request)
     {
-        //
+        $idperbanyak = $request->idperbanyak;
+        $namaBaru = $request->nama;
+
+        DB::table('perbanyak')
+            ->where('ID', $idperbanyak)
+            ->update(['NAMA' => $namaBaru]);
+
+        Session::flash('msg', 'Berhasil Mengubah Data Perbanyak');
+
+        return redirect()->route('perbanyak.index');
     }
 
     /**
@@ -82,8 +102,16 @@ class PerbanyakController extends Controller
      * @param  \App\Models\Perbanyak  $perbanyak
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Perbanyak $perbanyak)
+    public function destroy($id)
     {
-        //
+        try {
+            DB::table('perbanyak')->where('ID', $id)->delete();
+            Session::flash('msg', 'Berhasil Menghapus Data Perbanyak');
+        } catch (\Exception $e) {
+            Session::flash('error', 'Gagal menghapus data kebun. Data tersebut masih digunakan dalam tabel lain.');
+            \Log::error('Error saat menghapus data kebun: ' . $e->getMessage());
+        }
+        
+        return redirect()->route('perbanyak.index');
     }
 }

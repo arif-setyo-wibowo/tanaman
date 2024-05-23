@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Petak;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 
 class PetakController extends Controller
 {
@@ -15,7 +18,8 @@ class PetakController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Petak'
+            'title' => 'Petak',
+            'petak' => Petak::all()
         ];
 
         return view('tanaman.petak',$data);
@@ -39,7 +43,11 @@ class PetakController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $petak = new Petak;
+        $petak->NAMA = $request->nama;
+        $petak->save();
+        Session::flash('msg', 'Berhasil Tambah Data Petak');
+        return redirect()->route('petak.index');
     }
 
     /**
@@ -59,9 +67,11 @@ class PetakController extends Controller
      * @param  \App\Models\Petak  $petak
      * @return \Illuminate\Http\Response
      */
-    public function edit(Petak $petak)
+    public function edit($id)
     {
-        //
+        $data['petak'] = Petak::find($id);
+        $data['title'] = 'Edit';
+        return view('tanaman.petak_edit',$data);
     }
 
     /**
@@ -71,9 +81,18 @@ class PetakController extends Controller
      * @param  \App\Models\Petak  $petak
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Petak $petak)
+    public function update(Request $request)
     {
-        //
+        $idpetak = $request->idpetak;
+        $namaBaru = $request->nama;
+
+        DB::table('petak')
+            ->where('ID', $idpetak)
+            ->update(['NAMA' => $namaBaru]);
+
+        Session::flash('msg', 'Berhasil Mengubah Data Petak');
+
+        return redirect()->route('petak.index');
     }
 
     /**
@@ -82,8 +101,15 @@ class PetakController extends Controller
      * @param  \App\Models\Petak  $petak
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Petak $petak)
+    public function destroy($id)
     {
-        //
+        try {
+            DB::table('petak')->where('ID', $id)->delete();
+            Session::flash('msg', 'Berhasil Menghapus Data Petak');
+        } catch (\Exception $e) {
+            Session::flash('error', 'Gagal menghapus data Petak. Data tersebut masih digunakan dalam tabel lain.');
+        }
+        
+        return redirect()->route('petak.index');
     }
 }

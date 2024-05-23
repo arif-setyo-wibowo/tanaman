@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kebun;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class KebunController extends Controller
 {
@@ -15,7 +17,8 @@ class KebunController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Kebun'
+            'title' => 'Kebun',
+            'kebun' => Kebun::all()
         ];
 
         return view('tanaman.kebun',$data);
@@ -39,7 +42,11 @@ class KebunController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $kebun = new Kebun;
+        $kebun->NAMA = $request->nama;
+        $kebun->save();
+        Session::flash('msg', 'Berhasil Tambah Data Kebun');
+        return redirect()->route('kebun.index');
     }
 
     /**
@@ -59,9 +66,11 @@ class KebunController extends Controller
      * @param  \App\Models\Kebun  $kebun
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kebun $kebun)
+    public function edit($id)
     {
-        //
+        $data['kebun'] = Kebun::find($id);
+        $data['title'] = 'Edit';
+        return view('tanaman.kebun_edit',$data);
     }
 
     /**
@@ -71,9 +80,18 @@ class KebunController extends Controller
      * @param  \App\Models\Kebun  $kebun
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kebun $kebun)
-    {
-        //
+    public function update(Request $request)
+    { 
+        $idKebun = $request->idkebun;
+        $namaBaru = $request->nama;
+
+        DB::table('kebun')
+            ->where('id', $idKebun)
+            ->update(['NAMA' => $namaBaru]);
+
+        Session::flash('msg', 'Berhasil Mengubah Data Kebun');
+
+        return redirect()->route('kebun.index');
     }
 
     /**
@@ -82,8 +100,15 @@ class KebunController extends Controller
      * @param  \App\Models\Kebun  $kebun
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kebun $kebun)
+    public function destroy($id)
     {
-        //
+        try {
+            DB::table('kebun')->where('ID', $id)->delete();
+            Session::flash('msg', 'Berhasil Menghapus Data Kebun');
+        } catch (\Exception $e) {
+            Session::flash('error', 'Gagal menghapus data Kebun. Data tersebut masih digunakan dalam tabel lain.');
+        }
+        
+        return redirect()->route('kebun.index');
     }
 }

@@ -31,6 +31,15 @@
                         </button>
                     </div>
                     <?php endif ?>
+                    @if(Session::has('error'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="autoDismissAlert">
+                            {{ Session::get('error') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+
                     <div class="card card-primary card-outline card-tabs">
                         <div class="card-header p-0 pt-1 border-bottom-0">
                             <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
@@ -42,7 +51,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" id="custom-tab-tambah-edit" data-toggle="pill"
                                         href="#tab-tambah-edit" role="tab" aria-controls="tab-tambah-edit"
-                                        aria-selected="false">Tambah & Edit Perbanyak</a>
+                                        aria-selected="false">Tambah Perbanyak</a>
                                 </li>
                             </ul>
                         </div>
@@ -54,40 +63,41 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
+                                                <th>No</th>
                                                 <th>Nama</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($perbanyak as $item)
                                             <tr>
-                                                <td>Bunga</td>
+                                                <td>{{ $loop->iteration}}</td>
+                                                <td>{{ $item->NAMA}}</td>
                                                 <td>
-                                                    <button type="button" class="btn btn-info btn-sm"
-                                                        onclick="editPerbanyak('1','Bunga')">
+                                                    <a href="{{ route('perbanyak.edit', $item->ID) }}" class="btn btn-info btn-sm">
                                                         <i class="fas fa-pencil-alt"></i>
                                                         Edit
-                                                    </button>
-                                                    <a class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Perbanyak? Menghapus Perbanyak Dapat Menghapus Seluruh Data Yang Berelasi')"
-                                                        href="#">
-                                                        <i class="fas fa-trash">
-                                                        </i>
-                                                        Delete
                                                     </a>
+                                                    
+                                                    <!-- Formulir tersembunyi -->
+                                                    <form action="{{ route('perbanyak.destroy', $item->ID) }}" method="POST" style="display: inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Perbanyak?')">
+                                                            <i class="fas fa-trash"></i> Delete
+                                                        </button>
+                                                    </form>
+
                                                 </td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="tab-pane fade" id="tab-tambah-edit" role="tabpanel"
                                     aria-labelledby="custom-tab-tambah-edit">
-                                    <form action="" method="POST">
+                                    <form action="{{ route('perbanyak.store') }}" method="POST">
                                         @csrf
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">ID</label>
-                                            <input type="number" class="form-control" id="id" name="id"
-                                                placeholder="Masukkan ID" required>
-                                        </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Nama</label>
                                             <input type="text" class="form-control" id="nama" name="nama"

@@ -2,88 +2,54 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Login;
 use Illuminate\Http\Request;
+
+use App\Models\Petugas;
 
 class LoginController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $data = [
             'title' => 'Login'
         ];
-
         return view('tanaman.login',$data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function postlogin(Request $request)
     {
-        //
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ],[
+            'username.required' => 'Username admin harus diisi.',
+            'username.username' => 'Username admin tidak valid.',
+            'password.required' => 'Kata sandi admin harus diisi.',
+        ]);
+
+        $user = Petugas::where('username', $request->username)->first();
+
+        if ($user) {
+            if (password_verify($request->password, $user->password)) {
+                    session(['admin' => true]);
+                    session(['user.admin' => $user->username]);
+                    session(['nama.admin' => $user->nama]);                                  
+                    return redirect()->route('dashboard');
+            } else {
+                return redirect()->route('login')->withErrors(['error' => 'Password salah'])->withInput();
+            }
+        } else {
+            return redirect()->route('login')->withErrors(['error' => 'Email tidak ditemukan'])->withInput();
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Login  $login
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Login $login)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Login  $login
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Login $login)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Login  $login
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Login $login)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Login  $login
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Login $login)
-    {
-        //
+    public function logout (Request $request){
+        session()->forget('admin');
+        session()->forget('user.admin');
+        session()->forget('nama.admin'); 
+        return redirect()->route('login');
     }
 }

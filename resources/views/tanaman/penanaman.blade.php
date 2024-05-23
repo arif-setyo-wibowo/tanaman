@@ -73,7 +73,7 @@
                                                         Edit
                                                     </button>
                                                     <a class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Penanaman? Menghapus Penanaman Dapat Menghapus Seluruh Data Yang Berelasi')"
+                                                        onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Penanaman?')"
                                                         href="#">
                                                         <i class="fas fa-trash">
                                                         </i>
@@ -88,11 +88,6 @@
                                     aria-labelledby="custom-tab-tambah-edit">
                                     <form action="" method="POST">
                                         @csrf
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">ID</label>
-                                            <input type="number" class="form-control" id="id" name="id"
-                                                placeholder="Masukkan ID" required>
-                                        </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Tanaman</label>
                                             <select class="form-control" name="tanaman" id="tanaman" required>

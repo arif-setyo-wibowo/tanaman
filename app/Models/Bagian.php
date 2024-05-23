@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Bagian extends Model
 {
     use HasFactory;
+    protected $table = 'bagian';
+    protected $primary = 'ID';
+    public $timestamps = false;
 }

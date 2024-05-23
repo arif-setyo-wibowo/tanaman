@@ -19,7 +19,7 @@ class PetugasController extends Controller
     {
         $data = [
             'title' => 'Petugas',
-            'petugas' => 'Petugas::all()'
+            'petugas' => Petugas::all()
         ];
         return view('petugas',$data);
     }

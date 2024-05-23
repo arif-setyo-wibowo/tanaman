@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Perbanyak extends Model
 {
     use HasFactory;
+    protected $table = 'perbanyak';
+    protected $primary = 'ID';
+    public $timestamps = false;
 }

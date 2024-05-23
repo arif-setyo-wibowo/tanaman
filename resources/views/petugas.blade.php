@@ -72,7 +72,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {{-- @foreach ($petugas as $item)
+                                            @foreach ($petugas as $item)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $item->nama }}</td>
@@ -92,7 +92,7 @@
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                @endforeach --}}
+                                                @endforeach
                                     </table>
                                 </div>
                                 <div class="tab-pane fade" id="tab-tambah-edit" role="tabpanel"

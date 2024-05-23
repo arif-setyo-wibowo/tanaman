@@ -40,9 +40,9 @@
 <div class="wrapper">
 
   <!-- Preloader -->
-  {{-- <div class="preloader flex-column justify-content-center align-items-center">
+  <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="{{ asset('assets/admin/') }}/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-  </div> --}}
+  </div>
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -85,29 +85,56 @@
           </li>
           <li class="nav-header">Data</li>
           <li class="nav-item">
-             <a href="{{route('admin.bagian')}}" @if ($title == 'Bagian') class="nav-link active" @else class="nav-link" @endif>
+             <a href="{{route('bagian.index')}}" @if ($title == 'Bagian') class="nav-link active" @else class="nav-link" @endif>
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Bagian
               </p>
             </a>
           </li>
+          
           <li class="nav-item">
-             <a href="{{ route('admin.gambar')}}" @if ($title == 'Gambar') class="nav-link active" @else class="nav-link" @endif>
+              <a href="{{ route('perbanyak.index')}}" @if ($title == 'Perbanyak') class="nav-link active" @else class="nav-link" @endif>
               <i class="nav-icon fas fa-columns"></i>
+              <p>
+                Perbanyak
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+              <a href="{{ route('petak.index')}}" @if ($title == 'Petak') class="nav-link active" @else class="nav-link" @endif>
+              <i class="nav-icon fas fa-columns"></i>
+              <p>
+                Petak
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+              <a href="{{ route('kebun.index')}}" @if ($title == 'Kebun') class="nav-link active" @else class="nav-link" @endif>
+              <i class="nav-icon fas fa-columns"></i>
+              <p>
+                Kebun
+              </p>
+            </a>
+          </li>
+          <li class="nav-header">Tanaman</li>
+          <li class="nav-item">
+            <a href="{{ route('tanaman.index')}}" @if ($title == 'Tanaman') class="nav-link active" @else class="nav-link" @endif>
+             <i class="nav-icon fa fa-leaf"></i>
+             <p>
+               Tanaman
+             </p>
+           </a>
+         </li>
+          <li class="nav-item">
+             <a href="{{ route('gambar.index')}}" @if ($title == 'Gambar') class="nav-link active" @else class="nav-link" @endif>
+              <i class="nav-icon far fa-images"></i>
               <p>
                 Gambar
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.kebun')}}" @if ($title == 'Kebun') class="nav-link active" @else class="nav-link" @endif>
-             <i class="nav-icon fas fa-columns"></i>
-             <p>
-               Kebun
-             </p>
-           </a>
-         </li>
+          
          <li class="nav-item">
           <a href="{{ route('admin.penanaman')}}" @if ($title == 'Penanaman') class="nav-link active" @else class="nav-link" @endif>
            <i class="nav-icon fas fa-columns"></i>
@@ -116,33 +143,11 @@
            </p>
          </a>
        </li>
-       <li class="nav-item">
-          <a href="{{ route('admin.perbanyak')}}" @if ($title == 'Perbanyak') class="nav-link active" @else class="nav-link" @endif>
-           <i class="nav-icon fas fa-columns"></i>
-           <p>
-             Perbanyak
-           </p>
-         </a>
-       </li>
-       <li class="nav-item">
-          <a href="{{ route('admin.petak')}}" @if ($title == 'Petak') class="nav-link active" @else class="nav-link" @endif>
-           <i class="nav-icon fas fa-columns"></i>
-           <p>
-             Petak
-           </p>
-         </a>
-       </li>
-       <li class="nav-item">
-          <a href="{{ route('admin.tanaman')}}" @if ($title == 'Tanaman') class="nav-link active" @else class="nav-link" @endif>
-           <i class="nav-icon fas fa-columns"></i>
-           <p>
-             Tanaman
-           </p>
-         </a>
-       </li>
+       
+       <li class="nav-header">Petugas</li>
        <li class="nav-item">
           <a href="{{ route('admin.petugas')}}" @if ($title == 'User') class="nav-link active" @else class="nav-link" @endif>
-          <i class="nav-icon fas fa-columns"></i>
+          <i class="nav-icon far fa-user"></i>
           <p>
             User
           </p>
@@ -215,7 +220,8 @@
 <script src="{{ asset('assets/admin/') }}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="{{ asset('assets/admin/') }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="{{ asset('assets/admin/') }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<script src="{{ asset('assets/admin') }}/js/custom.js"></script>
+<script src="{{ asset('assets/admin/') }}/js/custom.js"></script>
+@yield('js')
 
 <!-- Filterizr-->
 <script src="{{ asset('assets/admin') }}/plugins/filterizr/jquery.filterizr.min.js"></script>
@@ -244,6 +250,5 @@ $(function () {
   })
 </script>
 
-@yield('js')
 </body>
 </html>
