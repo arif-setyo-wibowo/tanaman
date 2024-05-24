@@ -111,6 +111,7 @@ class GambarController extends Controller
             $images = $request->file('images');
             $imagesName = Str::random(20) . '.' . $images->getClientOriginalExtension();
             $images->move(public_path('uploads'), $imagesName);
+            File::delete('uploads/'.$gambar->path);
             $gambar->path = $imagesName;
         }else{
             $gambar->path = $request->imagesAwal;
@@ -132,7 +133,10 @@ class GambarController extends Controller
     public function destroy($id)
     {
         try {
+            
+            $gambar = Gambar::find($id);
             DB::table('gambar')->where('id', $id)->delete();
+            File::delete('uploads/'.$gambar->path);
             Session::flash('msg', 'Berhasil Menghapus Data Gambar');
         } catch (\Exception $e) {
             Session::flash('error', 'Gagal menghapus data Gambar. Data tersebut masih digunakan dalam tabel lain.');
