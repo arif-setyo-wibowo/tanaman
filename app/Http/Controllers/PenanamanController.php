@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Penanaman;
+use App\Models\Tanaman;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class PenanamanController extends Controller
 {
@@ -15,7 +18,9 @@ class PenanamanController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Penanaman'
+            'title' => 'Penanaman', 
+            'tanaman' => Tanaman::all(),
+            'penanaman' => Penanaman::with('tanaman')->get()
         ];
 
         return view('tanaman.penanaman',$data);
@@ -39,7 +44,13 @@ class PenanamanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $penanaman = new Penanaman;
+        $penanaman->id_tanaman = $request->tanaman;
+        $penanaman->tahun = $request->tahun;
+        $penanaman->jumlah = $request->jumlah;
+        $penanaman->save();
+        Session::flash('msg', 'Berhasil Menambah Data Penanaman');
+        return redirect()->route('penanaman.index');
     }
 
     /**
@@ -59,9 +70,15 @@ class PenanamanController extends Controller
      * @param  \App\Models\Penanaman  $penanaman
      * @return \Illuminate\Http\Response
      */
-    public function edit(Penanaman $penanaman)
+    public function edit($id)
     {
-        //
+        $data = [
+            'title' => 'Edit',
+            'tanaman' => Tanaman::all(),
+            'penanaman' => Penanaman::with('tanaman')->where('id',$id)->get()
+        ];
+
+        return view('tanaman.penanaman_edit',$data);
     }
 
     /**
@@ -71,9 +88,16 @@ class PenanamanController extends Controller
      * @param  \App\Models\Penanaman  $penanaman
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Penanaman $penanaman)
+    public function update(Request $request)
     {
-        //
+        
+        $penanaman = Penanaman::find($request->idpenanaman);
+        $penanaman->id_tanaman = $request->tanaman;
+        $penanaman->tahun = $request->tahun;
+        $penanaman->jumlah = $request->jumlah; 
+        $penanaman->save();
+        Session::flash('msg', 'Berhasil Mengubah Data Penanaman');
+        return redirect()->route('penanaman.index');
     }
 
     /**

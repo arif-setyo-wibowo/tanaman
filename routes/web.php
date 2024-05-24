@@ -10,11 +10,12 @@ use App\Http\Controllers\PerbanyakController;
 use App\Http\Controllers\TanamanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PetugasController;
+use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(DashboardController::class)->group(function () {
     Route::get('/', 'front')->name('front');
-    Route::get('/detail', 'detail')->name('detail');
+    Route::get('/detail/{id}', 'detail')->name('detail');
 });
 
 
@@ -43,14 +44,15 @@ Route::middleware('petugas')->prefix('/admin')->group(function () {
     
     Route::resource('gambar', GambarController::class);
 
+    Route::resource('penanaman', PenanamanController::class);
 
-    Route::controller(PenanamanController::class)->prefix('/penanaman')->group(function () {
-        Route::get('/', 'index')->name('admin.penanaman');
-        Route::post('/', 'storeUpdate')->name('admin.penanaman.storeupdate');
-        Route::get('/detail', 'show')->name('admin.penanaman.detail');
-        Route::get('/delete', 'destroy')->name('admin.penanaman.delete');
+
+    Route::controller(SliderController::class)->prefix('slider')->group(function () {
+        Route::get('/', 'index')->name('admin.slider');
+        Route::post('/', 'storeUpdate')->name('admin.slider.post');
     });
 
+    
     Route::controller(LoginController::class)->prefix('/logout')->group(function () {
         Route::get('/', 'logout')->name('admin.logout');
     });

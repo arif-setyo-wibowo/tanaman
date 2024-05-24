@@ -43,7 +43,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" id="custom-tab-tambah-edit" data-toggle="pill"
                                         href="#tab-tambah-edit" role="tab" aria-controls="tab-tambah-edit"
-                                        aria-selected="false">Tambah & Edit Penanaman</a>
+                                        aria-selected="false">Tambah Penanaman</a>
                                 </li>
                             </ul>
                         </div>
@@ -55,6 +55,7 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
+                                                <th>No</th>
                                                 <th>Tanaman</th>
                                                 <th>Tahun</th>
                                                 <th>Jumlah</th>
@@ -62,43 +63,52 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($penanaman as $item)
                                             <tr>
-                                                <td>Bunga</td>
-                                                <td>1990</td>
-                                                <td>5</td>
+                                                <td>{{ $loop->iteration}}</td>
+                                                <td>{{ $item->tanaman->nama_lokal}}</td>
+                                                <td>{{ $item->tahun}}</td>
+                                                <td>{{ $item->jumlah}}</td>
                                                 <td>
-                                                    <button type="button" class="btn btn-info btn-sm"
-                                                        onclick="editPenanaman('1','Bunga')">
+                                                    <a href="{{ route('penanaman.edit', $item->id) }}" class="btn btn-info btn-sm">
                                                         <i class="fas fa-pencil-alt"></i>
                                                         Edit
-                                                    </button>
-                                                    <a class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Penanaman?')"
-                                                        href="#">
-                                                        <i class="fas fa-trash">
-                                                        </i>
-                                                        Delete
                                                     </a>
+                                                    <form action="{{ route('penanaman.destroy', $item->id) }}" method="POST" style="display: inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Gambar?')">
+                                                            <i class="fas fa-trash"></i> Delete
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
+                                            @endforeach
+                                            
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="tab-pane fade" id="tab-tambah-edit" role="tabpanel"
                                     aria-labelledby="custom-tab-tambah-edit">
-                                    <form action="" method="POST">
+                                    <form action="{{ route('penanaman.store')}}" method="POST">
                                         @csrf
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Tanaman</label>
                                             <select class="form-control" name="tanaman" id="tanaman" required>
-                                                <option value="" selected disabled>Pilih Tanaman</option>
-                                                <option value="Bunga">Bunga</option>
+                                                <option selected disabled>Pilih Tanaman</option>
+                                                @foreach ($tanaman as $item)
+                                                    <option value="{{ $item->id}}">{{ $item->nama_lokal}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Tahun</label>
-                                            <input type="text" class="form-control" id="tahun" name="tahun"
-                                                placeholder="Masukkan Tahun" required>
+                                            <select class="form-control" name="tahun" id="tanaman" required>
+                                                <option selected disabled>Pilih Tahun</option>
+                                                @for ($i = 1950; $i < 2100; $i++)
+                                                <option value="{{ $i}}">{{ $i}}</option>
+                                                @endfor
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Jumlah</label>

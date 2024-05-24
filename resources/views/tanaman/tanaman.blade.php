@@ -97,7 +97,7 @@
                                                     <form action="{{ route('tanaman.destroy', $item->id) }}" method="POST" style="display: inline;">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Petak?')">
+                                                        <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Tanaman?')">
                                                             <i class="fas fa-trash"></i> Delete
                                                         </button>
                                                     </form>

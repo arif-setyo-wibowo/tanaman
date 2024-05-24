@@ -89,7 +89,7 @@ class TanamanController extends Controller
     public function edit($id)
     {
         $data = [
-            'title' => 'Tanaman',
+            'title' => 'Edit',
             'petak' => Petak::all(),
             'perbanyak' => Perbanyak::all(),
             'kebun' => Kebun::all(),

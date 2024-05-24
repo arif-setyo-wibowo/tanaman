@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gambar;
+use App\Models\Tanaman;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class GambarController extends Controller
 {
@@ -16,7 +21,8 @@ class GambarController extends Controller
     {
         $data = [
             'title' => 'Gambar',
-            'gambar' => Gambar::all()
+            'gambar' => Gambar::with('tanaman')->get(),
+            'tanaman' => Tanaman::all()
         ];
 
         return view('tanaman.gambar',$data);
@@ -40,7 +46,22 @@ class GambarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'images' => 'image|mimes:png,jpg,jpeg',
+        ]);
+
+        $gambar = new Gambar;
+        if ($request->file('images')) {
+            $images = $request->file('images');
+            $imagesName = Str::random(20) . '.' . $images->getClientOriginalExtension();
+            $images->move(public_path('uploads'), $imagesName);
+            $gambar->path = $imagesName;
+        }
+        $gambar->id_tanaman = $request->tanaman;
+        $gambar->save();
+
+        Session::flash('msg', 'Berhasil Menambah Data Gambar');
+        return redirect()->route('gambar.index');
     }
 
     /**
@@ -60,9 +81,15 @@ class GambarController extends Controller
      * @param  \App\Models\Gambar  $gambar
      * @return \Illuminate\Http\Response
      */
-    public function edit(Gambar $gambar)
+    public function edit($id)
     {
-        //
+        $data = [
+            'title' => 'Edit',
+            'tanaman' => Tanaman::all(),
+            'gambar' => Gambar::with('tanaman')->where('id',$id)->get()
+        ];
+
+        return view('tanaman.gambar_edit',$data);
     }
 
     /**
@@ -72,9 +99,28 @@ class GambarController extends Controller
      * @param  \App\Models\Gambar  $gambar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gambar $gambar)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'images' => 'image|mimes:png,jpg,jpeg',
+        ]);
+
+        $gambar = Gambar::find($request->idgambar);
+
+        if ($request->file('images')) {
+            $images = $request->file('images');
+            $imagesName = Str::random(20) . '.' . $images->getClientOriginalExtension();
+            $images->move(public_path('uploads'), $imagesName);
+            $gambar->path = $imagesName;
+        }else{
+            $gambar->path = $request->imagesAwal;
+        }
+
+        $gambar->id_tanaman = $request->tanaman;
+        $gambar->save();
+
+        Session::flash('msg', 'Berhasil Mengubah Data Gambar');
+        return redirect()->route('gambar.index');
     }
 
     /**
@@ -83,8 +129,15 @@ class GambarController extends Controller
      * @param  \App\Models\Gambar  $gambar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gambar $gambar)
+    public function destroy($id)
     {
-        //
+        try {
+            DB::table('gambar')->where('id', $id)->delete();
+            Session::flash('msg', 'Berhasil Menghapus Data Gambar');
+        } catch (\Exception $e) {
+            Session::flash('error', 'Gagal menghapus data Gambar. Data tersebut masih digunakan dalam tabel lain.');
+        }
+        
+        return redirect()->route('gambar.index');
     }
 }

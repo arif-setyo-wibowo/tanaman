@@ -31,6 +31,18 @@
                         </button>
                     </div>
                     <?php endif ?>
+                    
+                    @if ($errors->any())
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="autoDismissAlert">
+
+                            @foreach ($errors->all() as $error)
+                                <i class="bi bi-exclamation-octagon me-1"> {{ $error }} </i><br>
+                            @endforeach
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
                     <div class="card card-primary card-outline card-tabs">
                         <div class="card-header p-0 pt-1 border-bottom-0">
                             <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
@@ -42,7 +54,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" id="custom-tab-tambah-edit" data-toggle="pill"
                                         href="#tab-tambah-edit" role="tab" aria-controls="tab-tambah-edit"
-                                        aria-selected="false">Tambah & Edit Gambar</a>
+                                        aria-selected="false">Tambah Gambar</a>
                                 </li>
                             </ul>
                         </div>
@@ -54,49 +66,53 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
+                                                <th>No</th>
                                                 <th>Tanaman</th>
                                                 <th>Preview</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($gambar as $item)
                                             <tr>
-                                                <td>Bunga</td>
-                                                <td><img style="width: 10%" src="https://placehold.co/400" alt=""></td>
+                                                <td>{{ $loop->iteration}}</td>
+                                                <td>{{ $item->tanaman->nama_lokal }}</td>
+                                                <td><img src="{{ asset('uploads/' . $item->path) }}"
+                                                    style="width:120px; height:120px;"></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-info btn-sm"
-                                                        onclick="editGambar('1','Bunga')">
+                                                    <a href="{{ route('gambar.edit', $item->id) }}" class="btn btn-info btn-sm">
                                                         <i class="fas fa-pencil-alt"></i>
                                                         Edit
-                                                    </button>
-                                                    <a class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Gambar? Menghapus Gambar Dapat Menghapus Seluruh Data Yang Berelasi')"
-                                                        href="#">
-                                                        <i class="fas fa-trash">
-                                                        </i>
-                                                        Delete
                                                     </a>
+                                                    <form action="{{ route('gambar.destroy', $item->id) }}" method="POST" style="display: inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Gambar?')">
+                                                            <i class="fas fa-trash"></i> Delete
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="tab-pane fade" id="tab-tambah-edit" role="tabpanel"
                                     aria-labelledby="custom-tab-tambah-edit">
-                                    <form action="" method="POST">
+                                    <form action="{{ route('gambar.store')}}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Tanaman</label>
                                             <select class="form-control" name="tanaman" id="tanaman" required>
-                                                <option value="" selected disabled>Pilih Tanaman</option>
-                                                <option value="Bunga">Bunga</option>
+                                                <option selected disabled>Pilih Tanaman</option>
+                                                @foreach ($tanaman as $item)
+                                                    <option value="{{ $item->id}}">{{ $item->nama_lokal}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Gambar</label>
-                                            <input type="file" name="images" id="gambar" class="form-control" multiple
-                                                required>
-                                            <span class="text-danger" id="notifPassword"></span>
+                                            <input type="file" name="images" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <input type="submit" name="proses" id="proses" value="Tambah"

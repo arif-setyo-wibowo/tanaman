@@ -136,7 +136,7 @@
           </li>
           
          <li class="nav-item">
-          <a href="{{ route('admin.penanaman')}}" @if ($title == 'Penanaman') class="nav-link active" @else class="nav-link" @endif>
+          <a href="{{ route('penanaman.index')}}" @if ($title == 'Penanaman') class="nav-link active" @else class="nav-link" @endif>
            <i class="nav-icon fas fa-columns"></i>
            <p>
              Penanaman
@@ -150,6 +150,15 @@
           <i class="nav-icon far fa-user"></i>
           <p>
             User
+          </p>
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a href="{{ route('admin.slider')}}" class="nav-link">
+          <i class="nav-icon fas fa-th"></i>
+          <p>
+            Slider
           </p>
         </a>
       </li>

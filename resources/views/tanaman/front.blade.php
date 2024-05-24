@@ -1,44 +1,60 @@
 @extends('template.template-front')
 @section('content')
 <section class="wrapper bg-light">
-    <div class="swiper-container swiper-thumbs-container swiper-fullscreen nav-dark" data-margin="0"
-        data-autoplay="true" data-autoplaytime="5000" data-nav="false" data-dots="false" data-items="1"
-        data-thumbs="true">
+    <div class="swiper-container swiper-hero dots-over" data-margin="0" data-autoplay="true" data-autoplaytime="7000" data-nav="true" data-dots="true" data-items="1">
         <div class="swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image"
-                    data-image-src="{{ asset('assets/front/') }}/img/photos/bg28.jpg"></div>
-                <div class="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image"
-                    data-image-src="{{ asset('assets/front/') }}/img/photos/bg29.jpg"></div>
-                <div class="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image"
-                    data-image-src="{{ asset('assets/front/') }}/img/photos/bg30.jpg"></div>
-                <div class="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image"
-                    data-image-src="{{ asset('assets/front/') }}/img/photos/bg31.jpg"></div>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image" data-image-src="{{ asset('uploads/'.$slider[0]->slider)}}">
+              <div class="container h-100">
+                <div class="row h-100">
+                  <div class="col-md-10 offset-md-1 col-lg-7 offset-lg-5 col-xl-6 offset-xl-6 col-xxl-5 offset-xxl-6 text-center text-lg-start justify-content-center align-self-center align-items-start">
+                    <h2 class="display-1 fs-56 mb-4 text-white animate__animated animate__slideInDown animate__delay-1s">{{ $slider[0]->judul}}</h2>
+                    <p class="lead fs-23 lh-sm mb-7 text-white animate__animated animate__slideInRight animate__delay-2s">{{ $slider[0]->deskripsi}}</p>
+                  </div>
+                  <!--/column -->
+                </div>
+                <!--/.row -->
+              </div>
+              <!--/.container -->
             </div>
-            <!--/.swiper-wrapper -->
-        </div>
-        <div class="swiper swiper-thumbs">
+            <!--/.swiper-slide -->
+            <div class="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image" data-image-src="{{ asset('uploads/'.$slider[1]->slider)}}">
+              <div class="container h-100">
+                <div class="row h-100">
+                  <div class="col-md-11 col-lg-8 col-xl-7 col-xxl-6 mx-auto text-center justify-content-center align-self-center">
+                    <h2 class="display-1 fs-56 mb-4 text-white animate__animated animate__slideInDown animate__delay-1s">{{ $slider[1]->judul}}</h2>
+                    <p class="lead fs-23 lh-sm mb-7 text-white animate__animated animate__slideInRight animate__delay-2s">{{ $slider[1]->deskripsi}}</p>
+                  </div>
+                  <!--/column -->
+                </div>
+                <!--/.row -->
+              </div>
+              <!--/.container -->
+            </div>
+            <!--/.swiper-slide -->
+            <div class="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image" data-image-src="{{ asset('uploads/'.$slider[2]->slider)}}">
+              <div class="container h-100">
+                <div class="row h-100">
+                  <div class="col-md-10 offset-md-1 col-lg-7 offset-lg-5 col-xl-6 offset-xl-6 col-xxl-5 offset-xxl-6 text-center text-lg-start justify-content-center align-self-center align-items-start">
+                    <h2 class="display-1 fs-56 mb-4 text-white animate__animated animate__slideInDown animate__delay-1s">{{ $slider[2]->judul}}</h2>
+                    <p class="lead fs-23 lh-sm mb-7 text-white animate__animated animate__slideInRight animate__delay-2s">{{ $slider[2]->deskripsi}}</p>
+                  </div>
+                  <!--/column -->
+                </div>
+                <!--/.row -->
+              </div>
+              <!--/.container -->
+            </div>
+            <!--/.swiper-slide -->
+          </div>
+          <!--/.swiper-wrapper -->
         </div>
         <!-- /.swiper -->
-        <div class="swiper-static">
-            <div class="container h-100 d-flex align-items-center justify-content-center">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto mt-n10 text-center">
-                        <h2 class="display-1 fs-60 text-white mb-0">
-                            Tumbuhkan Kehidupan, Sehatkan <span class="typer text-leaf" data-loop="false"
-                                data-delay="100" data-words="Lingkungan.">
-                            </span><span class="cursor text-leaf" data-owner="typer"></span></h2>
-                    </div>
-                    <!-- /column -->
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container -->
-        </div>
-        <!-- /.swiper-static -->
-    </div>
+      </div>
     <!-- /.swiper-container -->
 </section>
+
+
 <!-- /section -->
 <section class="wrapper bg-light">
     <div class="container pt-6 pb-5 pb-md-5">
@@ -47,40 +63,10 @@
                 <img src="{{asset('assets/front/')}}/img/icons/lineal/earth.svg"
                     class="svg-inject icon-svg icon-svg-md text-leaf" alt="" />
                 <h2 class="display-5 text-center mt-2 mb-10">Sejarah</h2>
+                <h2 class="display-5 text-center mt-2 mb-10">I absolutely love shooting weddings and couples because there are so many feelings to capture.</h2>
             </div>
             <!--/column -->
         </div>
-        <div class="row gx-lg-4 gx-xl-6">
-            <!--/column -->
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div id="accordion-3" class="accordion-wrapper">
-                    <div class="card accordion-item shadow-lg">
-                        <div class="card-header" id="accordion-heading-3-1">
-                            <button class="collapsed text-center" data-bs-toggle="collapse"
-                                data-bs-target="#accordion-collapse-3-1" aria-expanded="false"
-                                aria-controls="accordion-collapse-3-1">1995</button>
-                        </div>
-                        <!-- /.card-header -->
-                        <div id="accordion-collapse-3-1" class="collapse" aria-labelledby="accordion-heading-3-1"
-                            data-bs-target="#accordion-3">
-                            <div class="card-body">
-                                <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum
-                                    massa justo sit amet risus. Cras mattis consectetur purus sit amet fermentum.
-                                    Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cum sociis
-                                    natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed
-                                    odio dui. Cras justo odio, dapibus ac facilisis.</p>
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                        <!-- /.collapse -->
-                    </div>
-                    <!-- /.card -->
-                </div>
-                <!-- /.accordion-wrapper -->
-            </div>
-            <!--/column -->
-        </div>
-        <!--/.row -->
     </div>
     <!-- /.container -->
     <div class="overflow-hidden">
@@ -97,44 +83,70 @@
     <div class="container py-5 py-md-8">
         <div class="grid grid-view projects-masonry shop mb-13">
             <div class="row gx-md-8 gy-10 gy-md-13 isotope">
-                <div class="project item col-md-4 col-xl-3">
-                    <figure class="rounded mb-6">
-                        <img src="{{ asset('assets/front') }}/img/photos/sh1.jpg"
-                            srcset="{{ asset('assets/front') }}/img/photos/sh1@2x.jpg 2x" alt="" />
-                        <a href="{{ route('detail') }}" class="item-cart"><i class="uil uil-flower"></i> Lihat Detail
-                            Tanaman</a>
-                    </figure>
-                    <div class="post-header">
-                        <div class="d-flex flex-row align-items-center justify-content-between mb-2">
-                            <div class="post-category text-ash mb-0">Nama Latin</div>
+                @foreach ($gambar as $item)
+                    <div class="project item col-md-4 col-xl-3">
+                        <figure class="rounded mb-6">
+                            <img src="{{ asset('uploads/' . $item->path) }}"
+                                srcset="{{ asset('uploads/' . $item->path) }}" alt="" />
+                            <a href="{{ route('detail',$item->id) }}" class="item-cart"><i class="uil uil-flower"></i> Lihat Detail
+                                {{ $item->tanaman->nama_lokal}}</a>
+                        </figure>
+                        <div class="post-header">
+                            <div class="d-flex flex-row align-items-center justify-content-between mb-2">
+                                <div class="post-category text-ash mb-0 text-white">{{ $item->tanaman->nama_latin}}</div>
+                            </div>
+                            <h2 class="post-title h3 fs-22"><a href="{{ route('detail',$item->id) }}" class="link-dark">{{ $item->tanaman->nama_lokal}}</a></h2>
                         </div>
-                        <h2 class="post-title h3 fs-22"><a href="{{ route('detail') }}" class="link-dark">Nama
-                                Lokal</a></h2>
+                        <!-- /.post-header -->
                     </div>
-                    <!-- /.post-header -->
-                </div>
+                @endforeach
             </div>
             <!-- /.row -->
         </div>
         <!-- /.grid -->
         <nav class="d-flex justify-content-center" aria-label="pagination">
             <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true"><i class="uil uil-arrow-left"></i></span>
-                    </a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true"><i class="uil uil-arrow-right"></i></span>
-                    </a>
-                </li>
+                <!-- Previous Page Link -->
+                @if ($gambar->onFirstPage())
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true"><i class="uil uil-arrow-left"></i></span>
+                        </a>
+                    </li>
+                @else
+                    <li class="page-item">
+                        <a class="page-link" href="{{ $gambar->previousPageUrl() }}" aria-label="Previous">
+                            <span aria-hidden="true"><i class="uil uil-arrow-left"></i></span>
+                        </a>
+                    </li>
+                @endif
+        
+                <!-- Pagination Elements -->
+                @foreach ($gambar->links()->elements[0] as $page => $url)
+                    @if ($page == $gambar->currentPage())
+                        <li class="page-item active"><a class="page-link" href="#">{{ $page }}</a></li>
+                    @else
+                        <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                    @endif
+                @endforeach
+        
+                <!-- Next Page Link -->
+                @if ($gambar->hasMorePages())
+                    <li class="page-item">
+                        <a class="page-link" href="{{ $gambar->nextPageUrl() }}" aria-label="Next">
+                            <span aria-hidden="true"><i class="uil uil-arrow-right"></i></span>
+                        </a>
+                    </li>
+                @else
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true"><i class="uil uil-arrow-right"></i></span>
+                        </a>
+                    </li>
+                @endif
             </ul>
-            <!-- /.pagination -->
         </nav>
+        
         <!-- /nav -->
     </div>
     <div class="overflow-hidden">

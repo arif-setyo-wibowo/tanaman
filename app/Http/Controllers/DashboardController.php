@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Slider;
+use App\Models\Gambar;
+
 
 class DashboardController extends Controller
 {
@@ -17,12 +20,15 @@ class DashboardController extends Controller
     public function front()
     {
         $data = [
-            'title' => 'Dashboard'
+            'title' => 'Dashboard',
+            'slider' => Slider::all(),
+            'gambar' => Gambar::with('tanaman')->paginate(10) 
         ];
         return view('tanaman.front', $data);
+        
     }
 
-    public function detail()
+    public function detail($id)
     {
         $data = [
             'title' => 'Dashboard'
