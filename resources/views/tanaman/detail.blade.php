@@ -21,14 +21,24 @@
                     data-nav="false" data-thumbs="false">
                     <div class="swiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <figure class="rounded"><img src="{{ asset('assets/front/') }}/img/photos/sh1.jpg"
-                                        srcset="{{ asset('assets/front/') }}/img/photos/sh1@2x.jpg 2x" alt="" /><a
-                                        class="item-link" href="{{ asset('assets/front/') }}/img/photos/sh1@2x.jpg"
-                                        data-glightbox data-gallery="product-group"><i
-                                            class="uil uil-focus-add"></i></a></figure>
-                            </div>
+                            @foreach ($gambar as $g)
+                                <div class="swiper-slide">
+                                    <figure class="rounded"><img src="{{ asset('uploads/' . $g->path) }}"
+                                            srcset="{{ asset('uploads/' . $g->path) }} 2x" alt="" /><a class="item-link"
+                                            href="{{ asset('uploads/' . $g->path) }}" data-glightbox
+                                            data-gallery="product-group"><i class="uil uil-focus-add"></i></a></figure>
+                                </div>
+                            @endforeach
                             <!--/.swiper-slide -->
+                        </div>
+                        <!--/.swiper-wrapper -->
+                    </div>
+                    <div class="swiper swiper-thumbs">
+                        <div class="swiper-wrapper">
+                            @foreach ($gambar as $g)
+                                <div class="swiper-slide"><img src="{{asset('uploads/' . $g->path)}}"
+                                        srcset="{{asset('uploads/' . $g->path)}} 2x" class="rounded" alt="" /></div>
+                            @endforeach
                         </div>
                         <!--/.swiper-wrapper -->
                     </div>

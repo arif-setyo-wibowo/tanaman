@@ -1,59 +1,83 @@
 @extends('template.template-front')
 @section('content')
 <section class="wrapper bg-light">
-    <div class="swiper-container swiper-hero dots-over" data-margin="0" data-autoplay="true" data-autoplaytime="7000" data-nav="true" data-dots="true" data-items="1">
+    <div class="swiper-container swiper-hero dots-over" data-margin="0" data-autoplay="true" data-autoplaytime="7000"
+        data-nav="true" data-dots="true" data-items="1">
         <div class="swiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image" data-image-src="{{ asset('uploads/'.$slider[0]->slider)}}">
-              <div class="container h-100">
-                <div class="row h-100">
-                  <div class="col-md-10 offset-md-1 col-lg-7 offset-lg-5 col-xl-6 offset-xl-6 col-xxl-5 offset-xxl-6 text-center text-lg-start justify-content-center align-self-center align-items-start">
-                    <h2 class="display-1 fs-56 mb-4 text-white animate__animated animate__slideInDown animate__delay-1s">{{ $slider[0]->judul}}</h2>
-                    <p class="lead fs-23 lh-sm mb-7 text-white animate__animated animate__slideInRight animate__delay-2s">{{ $slider[0]->deskripsi}}</p>
-                  </div>
-                  <!--/column -->
+            <div class="swiper-wrapper">
+                <div class="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image"
+                    data-image-src="{{ asset('uploads/' . $slider[0]->slider)}}">
+                    <div class="container h-100">
+                        <div class="row h-100">
+                            <div
+                                class="col-md-11 col-lg-8 col-xl-7 col-xxl-6 mx-auto text-center justify-content-center align-self-center">
+                                <h2
+                                    class="display-1 fs-56 mb-4 text-white animate__animated animate__slideInDown animate__delay-1s">
+                                    {{ $slider[0]->judul}}
+                                </h2>
+                                <p
+                                    class="lead fs-23 lh-sm mb-7 text-white animate__animated animate__slideInRight animate__delay-2s">
+                                    {{ $slider[0]->deskripsi}}
+                                </p>
+                            </div>
+                            <!--/column -->
+                        </div>
+                        <!--/.row -->
+                    </div>
+                    <!--/.container -->
                 </div>
-                <!--/.row -->
-              </div>
-              <!--/.container -->
-            </div>
-            <!--/.swiper-slide -->
-            <div class="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image" data-image-src="{{ asset('uploads/'.$slider[1]->slider)}}">
-              <div class="container h-100">
-                <div class="row h-100">
-                  <div class="col-md-11 col-lg-8 col-xl-7 col-xxl-6 mx-auto text-center justify-content-center align-self-center">
-                    <h2 class="display-1 fs-56 mb-4 text-white animate__animated animate__slideInDown animate__delay-1s">{{ $slider[1]->judul}}</h2>
-                    <p class="lead fs-23 lh-sm mb-7 text-white animate__animated animate__slideInRight animate__delay-2s">{{ $slider[1]->deskripsi}}</p>
-                  </div>
-                  <!--/column -->
+                <!--/.swiper-slide -->
+                <div class="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image"
+                    data-image-src="{{ asset('uploads/' . $slider[1]->slider)}}">
+                    <div class="container h-100">
+                        <div class="row h-100">
+                            <div
+                                class="col-md-11 col-lg-8 col-xl-7 col-xxl-6 mx-auto text-center justify-content-center align-self-center">
+                                <h2
+                                    class="display-1 fs-56 mb-4 text-white animate__animated animate__slideInDown animate__delay-1s">
+                                    {{ $slider[1]->judul}}
+                                </h2>
+                                <p
+                                    class="lead fs-23 lh-sm mb-7 text-white animate__animated animate__slideInRight animate__delay-2s">
+                                    {{ $slider[1]->deskripsi}}
+                                </p>
+                            </div>
+                            <!--/column -->
+                        </div>
+                        <!--/.row -->
+                    </div>
+                    <!--/.container -->
                 </div>
-                <!--/.row -->
-              </div>
-              <!--/.container -->
-            </div>
-            <!--/.swiper-slide -->
-            <div class="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image" data-image-src="{{ asset('uploads/'.$slider[2]->slider)}}">
-              <div class="container h-100">
-                <div class="row h-100">
-                  <div class="col-md-10 offset-md-1 col-lg-7 offset-lg-5 col-xl-6 offset-xl-6 col-xxl-5 offset-xxl-6 text-center text-lg-start justify-content-center align-self-center align-items-start">
-                    <h2 class="display-1 fs-56 mb-4 text-white animate__animated animate__slideInDown animate__delay-1s">{{ $slider[2]->judul}}</h2>
-                    <p class="lead fs-23 lh-sm mb-7 text-white animate__animated animate__slideInRight animate__delay-2s">{{ $slider[2]->deskripsi}}</p>
-                  </div>
-                  <!--/column -->
+                <!--/.swiper-slide -->
+                <div class="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image"
+                    data-image-src="{{ asset('uploads/' . $slider[2]->slider)}}">
+                    <div class="container h-100">
+                        <div class="row h-100">
+                            <div
+                                class="col-md-11 col-lg-8 col-xl-7 col-xxl-6 mx-auto text-center justify-content-center align-self-center">
+                                <h2
+                                    class="display-1 fs-56 mb-4 text-white animate__animated animate__slideInDown animate__delay-1s">
+                                    {{ $slider[2]->judul}}
+                                </h2>
+                                <p
+                                    class="lead fs-23 lh-sm mb-7 text-white animate__animated animate__slideInRight animate__delay-2s">
+                                    {{ $slider[2]->deskripsi}}
+                                </p>
+                            </div>
+                            <!--/column -->
+                        </div>
+                        <!--/.row -->
+                    </div>
+                    <!--/.container -->
                 </div>
-                <!--/.row -->
-              </div>
-              <!--/.container -->
+                <!--/.swiper-slide -->
             </div>
-            <!--/.swiper-slide -->
-          </div>
-          <!--/.swiper-wrapper -->
+            <!--/.swiper-wrapper -->
         </div>
         <!-- /.swiper -->
-      </div>
+    </div>
     <!-- /.swiper-container -->
 </section>
-
 
 <!-- /section -->
 <section class="wrapper bg-light">
@@ -63,7 +87,6 @@
                 <img src="{{asset('assets/front/')}}/img/icons/lineal/earth.svg"
                     class="svg-inject icon-svg icon-svg-md text-leaf" alt="" />
                 <h2 class="display-5 text-center mt-2 mb-10">Sejarah</h2>
-                <h2 class="display-5 text-center mt-2 mb-10">I absolutely love shooting weddings and couples because there are so many feelings to capture.</h2>
             </div>
             <!--/column -->
         </div>
@@ -79,6 +102,14 @@
     </div>
     <!-- /.overflow-hidden -->
 </section>
+<style>
+    .project figure img {
+        width: 100%;
+        height: 180px !important;
+        object-fit: cover;
+        object-position: center;
+    }
+</style>
 <section class="wrapper bg-leaf">
     <div class="container py-5 py-md-8">
         <div class="grid grid-view projects-masonry shop mb-13">
@@ -86,19 +117,24 @@
                 @foreach ($gambar as $item)
                     <div class="project item col-md-4 col-xl-3">
                         <figure class="rounded mb-6">
-                            <img src="{{ asset('uploads/' . $item->path) }}"
+                            <img style="height: unset;" src="{{ asset('uploads/' . $item->path) }}"
                                 srcset="{{ asset('uploads/' . $item->path) }}" alt="" />
-                            <a href="{{ route('detail',$item->id) }}" class="item-cart"><i class="uil uil-flower"></i> Lihat Detail
-                                {{ $item->tanaman->nama_lokal}}</a>
+                            <a href="{{ route('detail', $item->id) }}" class="item-cart">
+                                <i class="uil uil-flower"></i> Lihat Detail {{ $item->tanaman->nama_lokal}}
+                            </a>
                         </figure>
                         <div class="post-header">
                             <div class="d-flex flex-row align-items-center justify-content-between mb-2">
                                 <div class="post-category text-ash mb-0 text-white">{{ $item->tanaman->nama_latin}}</div>
                             </div>
-                            <h2 class="post-title h3 fs-22"><a href="{{ route('detail',$item->id) }}" class="link-dark">{{ $item->tanaman->nama_lokal}}</a></h2>
+                            <h2 class="post-title h3 fs-22">
+                                <a href="{{ route('detail', $item->id) }}"
+                                    class="link-dark">{{ $item->tanaman->nama_lokal}}</a>
+                            </h2>
                         </div>
                         <!-- /.post-header -->
                     </div>
+
                 @endforeach
             </div>
             <!-- /.row -->
@@ -120,7 +156,7 @@
                         </a>
                     </li>
                 @endif
-        
+
                 <!-- Pagination Elements -->
                 @foreach ($gambar->links()->elements[0] as $page => $url)
                     @if ($page == $gambar->currentPage())
@@ -129,7 +165,7 @@
                         <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
                     @endif
                 @endforeach
-        
+
                 <!-- Next Page Link -->
                 @if ($gambar->hasMorePages())
                     <li class="page-item">
@@ -146,7 +182,7 @@
                 @endif
             </ul>
         </nav>
-        
+
         <!-- /nav -->
     </div>
     <div class="overflow-hidden">
