@@ -1,7 +1,6 @@
 @extends('template.template-front')
 @section('content')
-<section class="wrapper image-wrapper bg-image bg-overlay bg-overlay-300"
-    data-image-src="{{ asset('assets/front/') }}/img/photos/bg13.jpg">
+<section class="bg-leaf bg-overlay bg-overlay-300">
     <div class="container pt-12 pt-md-12 text-center">
     </div>
     <!-- /.container -->
@@ -17,6 +16,7 @@
     <div class="container py-14 py-md-16">
         <div class="row gx-md-8 gx-xl-12 gy-8">
             <div class="col-lg-4">
+                <a class="btn btn-leaf w-100 mb-5" href="{{route('front')}}">Kembali</a>
                 <div class="swiper-container swiper-thumbs-container" data-margin="10" data-dots="false"
                     data-nav="false" data-thumbs="false">
                     <div class="swiper">
@@ -38,21 +38,56 @@
             </div>
             <!-- /column -->
             <div class="col-lg-8">
-                <div class="post-header mb-5">
-                    <h2 class="post-title display-5"><a href="./shop-product.html" class="link-dark">Nama Lokal</a></h2>
-                    <p class="price fs-20 mb-2"><span class="amount">Nama Latin</span></p>
-                </div>
-                <!-- /.post-header -->
-                <p class="mb-6">{nama_lokal} atau yang dikenal dengan nama latin {nama_latin} merupakan tanaman dari
-                    famili {nama_famili} yang berasal dari {asal}, tanaman ini dipercaya memiliki kegunaan untuk
-                    {kegunaan}.
-                    <br><br>
-                    Bagian yang digunakan pada tanaman ini adalah bagian {bagian}, tanaman ini dibudidaya dengan cara
-                    {diperbanyak}.
-                    <br><br>
-                    Pada kebun kami, status tanaman ini adalah {status}, lokasinya ada pada {id_kebun} di petak
-                    {id_petak}
-                </p>
+                <table class="table table-bordered table-hover table-responsive">
+                    <tr>
+                        <th>Nama Lokal</th>
+                        <td>Bunga</td>
+                    </tr>
+                    <tr>
+                        <th>Nama Latin</th>
+                        <td>Kembang</td>
+                    </tr>
+                    <tr>
+                        <th>Famili</th>
+                        <td>Keluarga</td>
+                    </tr>
+                    <tr>
+                        <th>Asal</th>
+                        <td>Indo</td>
+                    </tr>
+                    <tr>
+                        <th>Kegunaan</th>
+                        <td>Banyak</td>
+                    </tr>
+                    <tr>
+                        <th>Bagian</th>
+                        <td>Daun</td>
+                    </tr>
+                    <tr>
+                        <th>Perbanyak</th>
+                        <td>Cangkok</td>
+                    </tr>
+                    <tr>
+                        <th>Kebun</th>
+                        <td>Utama</td>
+                    </tr>
+                    <tr>
+                        <th>Petak</th>
+                        <td>W</td>
+                    </tr>
+                    <tr>
+                        <th>Latitude</th>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <th>Longitude</th>
+                        <td>53</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>Hidup</td>
+                    </tr>
+                </table>
             </div>
             <!-- /column -->
         </div>

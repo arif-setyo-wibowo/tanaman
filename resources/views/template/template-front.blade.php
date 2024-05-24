@@ -61,31 +61,65 @@
     </div>
     <!-- /.content-wrapper -->
     <footer class="bg-light">
-        <div class="container pb-13 pb-md-15">
-            <div class="card image-wrapper bg-full bg-image bg-overlay bg-overlay-300 mb-14"
-                data-image-src="{{ asset('assets/front/') }}/img/photos/bg13.jpg">
-                <div class="card-body p-10 p-xl-12">
-                    <div class="row text-center">
-                        <div class="col-xl-11 col-xxl-9 mx-auto">
-                            <h3 class="display-3 mb-8 px-lg-8 text-white">Tambah <span
-                                    class="underline-3 style-2 yellow">tanaman</span> baru!</h3>
-                        </div>
-                        <!-- /column -->
+        <div class="container pt-7 pb-7">
+            <div class="row gx-lg-0 gy-6">
+                <div class="col-lg-4">
+                    <div class="widget">
+                        <p class="lead mb-0">Kami percaya bahwa setiap tanaman adalah langkah kecil menuju dunia yang
+                            lebih hijau dan sehat. Mari bersama-sama kita
+                            tumbuhkan kehidupan dan sehatkan lingkungan kita.</p>
                     </div>
-                    <!-- /.row -->
-                    <div class="d-flex justify-content-center">
-                        <span><a href="{{ route('dashboard') }}" class="btn btn-white rounded">Klik Disini</a></span>
-                    </div>
+                    <!-- /.widget -->
                 </div>
-                <!--/.card-body -->
-            </div>
-            <!--/.card -->
-            <hr class="mt-13 mt-md-15 mb-7" />
-            <div class="d-md-flex align-items-center justify-content-between">
-                <p class="mb-2 mb-lg-0">© 2024 Tanaman.</p>
-                <!-- /.social -->
+                <!-- /column -->
+                <div class="col-lg-3 offset-lg-2">
+                    <div class="widget">
+                        <div class="d-flex flex-row">
+                            <div>
+                                <div class="icon text-leaf fs-28 me-4 mt-n1"> <i class="uil uil-phone-volume"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h5 class="mb-1">Email</h5>
+                                <p class="mb-0">hohahohe@gmail.com <br />hohahohe2@gmail.com</p>
+                            </div>
+                        </div>
+                        <!--/div -->
+                    </div>
+                    <!-- /.widget -->
+                </div>
+                <!-- /column -->
+                <div class="col-lg-3">
+                    <div class="widget">
+                        <div class="d-flex flex-row">
+                            <div>
+                                <div class="icon text-leaf fs-28 me-4 mt-n1"> <i class="uil uil-location-pin-alt"></i>
+                                </div>
+                            </div>
+                            <div class="align-self-start justify-content-start">
+                                <h5 class="mb-1">Alamat</h5>
+                                <address>Moonshine St. 14/05 Light City, London, United Kingdom</address>
+                            </div>
+                        </div>
+                        <!--/div -->
+                    </div>
+                    <!-- /.widget -->
+                </div>
+                <!-- /column -->
             </div>
             <!--/.row -->
+            <hr class="mt-11 mt-md-12 mb-7" />
+            <div class="d-md-flex align-items-center justify-content-between">
+                <p class="mb-2 mb-lg-0">© 2023 Tanaman.</p>
+                <nav class="nav social social-muted mb-0 text-md-end">
+                    <a href="#"><i class="uil uil-twitter"></i></a>
+                    <a href="#"><i class="uil uil-facebook-f"></i></a>
+                    <a href="#"><i class="uil uil-dribbble"></i></a>
+                    <a href="#"><i class="uil uil-instagram"></i></a>
+                    <a href="#"><i class="uil uil-youtube"></i></a>
+                </nav>
+                <!-- /.social -->
+            </div>
         </div>
         <!-- /.container -->
     </footer>
