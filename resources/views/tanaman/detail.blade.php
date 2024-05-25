@@ -18,7 +18,7 @@
             <div class="col-lg-4">
                 <a class="btn btn-leaf w-100 mb-5" href="{{route('front')}}">Kembali</a>
                 <div class="swiper-container swiper-thumbs-container" data-margin="10" data-dots="false"
-                    data-nav="false" data-thumbs="false">
+                    data-nav="false" data-thumbs="false" data-autoplay="true" data-autoplaytime="2000">
                     <div class="swiper">
                         <div class="swiper-wrapper">
                             @foreach ($gambar as $g)
@@ -33,17 +33,23 @@
                         </div>
                         <!--/.swiper-wrapper -->
                     </div>
-                    <div class="swiper swiper-thumbs">
-                        <div class="swiper-wrapper">
-                            @foreach ($gambar as $g)
-                                <div class="swiper-slide"><img src="{{asset('uploads/' . $g->path)}}"
-                                        srcset="{{asset('uploads/' . $g->path)}} 2x" class="rounded" alt="" /></div>
-                            @endforeach
-                        </div>
-                        <!--/.swiper-wrapper -->
-                    </div>
                     <!-- /.swiper -->
                 </div>
+                <table class="table table-bordered table-hover table-responsive mt-5">
+                    <tr>
+                        <th colspan="2" class="text-center">Penanaman</th>
+                    </tr>
+                    <tr>
+                        <th>Tahun</th>
+                        <th>Jumlah</th>
+                    </tr>
+                    @foreach ($tanaman as $t)
+                        <tr>
+                            <td>{{$t->tahun}}</td>
+                            <td>{{$t->jumlah}}</td>
+                        </tr>
+                    @endforeach
+                </table>
                 <!-- /.swiper-container -->
             </div>
             <!-- /column -->
@@ -51,51 +57,51 @@
                 <table class="table table-bordered table-hover table-responsive">
                     <tr>
                         <th>Nama Lokal</th>
-                        <td>Bunga</td>
+                        <td>{{$tanaman[0]->nama_lokal}}</td>
                     </tr>
                     <tr>
                         <th>Nama Latin</th>
-                        <td>Kembang</td>
+                        <td>{{$tanaman[0]->nama_latin}}</td>
                     </tr>
                     <tr>
                         <th>Famili</th>
-                        <td>Keluarga</td>
+                        <td>{{$tanaman[0]->famili}}</td>
                     </tr>
                     <tr>
                         <th>Asal</th>
-                        <td>Indo</td>
+                        <td>{{$tanaman[0]->asal}}</td>
                     </tr>
                     <tr>
                         <th>Kegunaan</th>
-                        <td>Banyak</td>
+                        <td>{{$tanaman[0]->kegunaan}}</td>
                     </tr>
                     <tr>
                         <th>Bagian</th>
-                        <td>Daun</td>
+                        <td>{{$tanaman[0]->nama_bagian}}</td>
                     </tr>
                     <tr>
                         <th>Perbanyak</th>
-                        <td>Cangkok</td>
+                        <td>{{$tanaman[0]->nama_perbanyak}}</td>
                     </tr>
                     <tr>
                         <th>Kebun</th>
-                        <td>Utama</td>
+                        <td>{{$tanaman[0]->nama_kebun}}</td>
                     </tr>
                     <tr>
                         <th>Petak</th>
-                        <td>W</td>
+                        <td>{{$tanaman[0]->nama_petak}}</td>
                     </tr>
                     <tr>
                         <th>Latitude</th>
-                        <td>12</td>
+                        <td>{{$tanaman[0]->latitude}}</td>
                     </tr>
                     <tr>
                         <th>Longitude</th>
-                        <td>53</td>
+                        <td>{{$tanaman[0]->longitude}}</td>
                     </tr>
                     <tr>
                         <th>Status</th>
-                        <td>Hidup</td>
+                        <td>{{$tanaman[0]->status}}</td>
                     </tr>
                 </table>
             </div>
