@@ -59,9 +59,9 @@ class TanamanController extends Controller
         $tanaman->id_bagian_yg_digunakan = $request->bagian;
         $tanaman->id_petak = $request->petak;
         $tanaman->id_kebun = $request->kebun;
-        $tanaman->latitude = '0';
-        $tanaman->longitude = '0';
-        $tanaman->asal = '0';
+        $tanaman->latitude =  $request->lat;
+        $tanaman->longitude =  $request->lon;
+        $tanaman->asal =  $request->asal;
         $tanaman->status = $request->status;
         $tanaman->save();
         Session::flash('msg', 'Berhasil Tambah Data Tanaman');
@@ -122,9 +122,9 @@ class TanamanController extends Controller
                 'id_bagian_yg_digunakan' => $request->bagian,
                 'id_petak' => $request->petak,
                 'id_kebun' => $request->kebun,
-                'latitude' => '0',
-                'longitude' => '0',
-                'asal' => '0',
+                'latitude' => $request->lat,
+                'longitude' => $request->lon,
+                'asal' =>$request->asal,
                 'status' => $request->status
             ]);
             Session::flash('msg', 'Berhasil Mengubah Data Tanaman');

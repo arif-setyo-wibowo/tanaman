@@ -58,6 +58,7 @@
                                         <div class="form-group">
                                             <input type="submit" name="proses" id="proses" value="Update"
                                                 class="btn btn-primary">
+                                                <a href="{{ route('bagian.index')}}" class="btn btn-warning" style="display: inline">Kembali</a>
                                         </div>
                                     </form>
                                 </div>

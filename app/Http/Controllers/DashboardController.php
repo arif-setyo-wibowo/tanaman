@@ -15,7 +15,9 @@ class DashboardController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Dashboard'
+            'title' => 'Dashboard',
+            'tanaman' =>  Tanaman::with('perbanyak','petak','kebun','bagian')->where('status', 'Hidup')->count(),
+            'tanamanMati' =>  Tanaman::with('perbanyak','petak','kebun','bagian')->where('status', 'Mati')->count(),
         ];
         return view('tanaman.dashboard', $data);
     }

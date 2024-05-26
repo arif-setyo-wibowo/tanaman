@@ -101,11 +101,11 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        {{-- <div class="form-group">
+                                        <div class="form-group">
                                             <label for="exampleInputEmail1">Asal</label>
                                             <input type="text" class="form-control" id="asal" name="asal"
-                                                placeholder="Masukkan Asal" required>
-                                        </div> --}}
+                                                placeholder="Masukkan Asal" value="{{ $item->asal}}" required>
+                                        </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Petak</label>
                                             <select class="form-control" name="petak" id="petak" required>
@@ -145,18 +145,18 @@
                                                 <option value="Mati" {{ $item->status == "Mati" ? 'selected' : '' }}>Mati</option>
                                             </select>
                                         </div>
-                                        {{-- <div class="form-group">
+                                        <div class="form-group">
                                             <label for="exampleInputEmail1">Latitude</label>
-                                            <input type="text" class="form-control" id="lat" name="lat"
-                                                placeholder="Masukkan Latitude" required>
+                                            <input type="text" class="form-control" name="lat"
+                                                placeholder="Masukkan Latitude" value="{{ $item->latitude}}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Longitude</label>
-                                            <input type="text" class="form-control" id="lon" name="lon"
-                                                placeholder="Masukkan Longitude" required>
-                                        </div> --}}
+                                            <input type="text" class="form-control" name="lon"
+                                                placeholder="Masukkan Longitude" value="{{ $item->longitude}}" required>
+                                        </div>
                                         <div class="form-group">
-                                            <input type="submit" name="proses" id="proses" value="Tambah"
+                                            <input type="submit" name="proses" id="proses" value="Update"
                                                 class="btn btn-primary">
                                                 <a href="{{ route('tanaman.index')}}" class="btn btn-warning" style="display: inline">Kembali</a>
                                         </div>

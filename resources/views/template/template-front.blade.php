@@ -80,8 +80,8 @@
                                 </div>
                             </div>
                             <div>
-                                <h5 class="mb-1">Email</h5>
-                                <p class="mb-0">hohahohe@gmail.com <br />hohahohe2@gmail.com</p>
+                                <h5 class="mb-1">Kontak</h5>
+                                <p class="mb-0">(0251) 8321879 <br />(0251) 8327010</p>
                             </div>
                         </div>
                         <!--/div -->
@@ -98,7 +98,7 @@
                             </div>
                             <div class="align-self-start justify-content-start">
                                 <h5 class="mb-1">Alamat</h5>
-                                <address>Moonshine St. 14/05 Light City, London, United Kingdom</address>
+                                <address>Jl. Tentara Pelajar No.3, Cimanggu, Bogor Barat, Kota Bogor, Jawa Barat, Indonesia 16111</address>
                             </div>
                         </div>
                         <!--/div -->
@@ -128,6 +128,7 @@
             <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
         </svg>
     </div>
+    @yield('js')
     <script src="{{ asset('assets/front/') }}/js/plugins.js"></script>
     <script src="{{ asset('assets/front/') }}/js/theme.js"></script>
 </body>

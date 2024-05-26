@@ -29,16 +29,28 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>12</h3>
+                <h3>{{ $tanaman}}</h3>
 
-                <p>Jumlah Tanaman</p>
+                <p>Jumlah Tanaman Hidup</p>
               </div>
               <div class="icon">
                 <i class="fas fa-plan"></i>
               </div>
             </div>
           </div>
-          
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>{{ $tanamanMati}}</h3>
+
+                <p>Jumlah Tanaman Mati</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-plan"></i>
+              </div>
+            </div>
+          </div>
           <!-- ./col -->
         </div>
         <!-- /.row -->

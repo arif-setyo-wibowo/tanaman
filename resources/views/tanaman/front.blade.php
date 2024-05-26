@@ -87,6 +87,22 @@
                 <img src="{{asset('assets/front/')}}/img/icons/lineal/earth.svg"
                     class="svg-inject icon-svg icon-svg-md text-leaf" alt="" />
                 <h2 class="display-5 text-center mt-2 mb-10">Sejarah</h2>
+                <li class="list-group-item">
+                    (1817) - Land Platentuin Buitenzorg<br>
+                    (1876) - Cultuurtuin<br>
+                    (1945) - Saibai Gizutsu-Bu (Balai Budidaya Tanaman) <br>
+                    (1946) - BPTP (Balai Penyelidikan Tanaman Pertanian) <br>
+                    (1961) - LPTS (LP Tanaman Serat dan Tanaman Industri Lainnya)<br>
+                    (1966) - LPTI (Lembaga Penelitian Tanaman Industri)<br>
+                    (1978) - Pusat Penelitian dan Pengembangan Tanaman Industri <br>
+                    (1980) - Balittri Bogor<br>
+                    (1984) - Balittro (Rempah & Obat) <br>
+                    (1998) - Balittro (Rempah & Obat) – Departemen Kehutanan dan Perkebunan <br>
+                    (2001) - Balittro (Rempah & Obat) – Departemen Pertanian <br>
+                    (2003) - Balittro (Obat & Aromatik) – Departemen Pertanian<br>
+                    (2012) - Balittro (Rempah & Obat) – Kementerian Pertanian <br>
+                    (2023) - Balai Pengujian Standardisasi Instrumen Tanaman Rempah Obat dan Aromatik – Kementerian Pertanian<br>
+                </li>
             </div>
             <!--/column -->
         </div>

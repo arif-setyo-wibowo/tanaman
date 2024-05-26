@@ -68,10 +68,6 @@
                         <td>{{$tanaman[0]->famili}}</td>
                     </tr>
                     <tr>
-                        <th>Asal</th>
-                        <td>{{$tanaman[0]->asal}}</td>
-                    </tr>
-                    <tr>
                         <th>Kegunaan</th>
                         <td>{{$tanaman[0]->kegunaan}}</td>
                     </tr>
@@ -90,6 +86,10 @@
                     <tr>
                         <th>Petak</th>
                         <td>{{$tanaman[0]->nama_petak}}</td>
+                    </tr>
+                    <tr>
+                        <th>Asal</th>
+                        <td>{{$tanaman[0]->asal}}</td>
                     </tr>
                     <tr>
                         <th>Latitude</th>

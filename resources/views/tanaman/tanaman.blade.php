@@ -72,6 +72,9 @@
                                                 <th>Bagian yang Digunakan</th>
                                                 <th>Petak</th>
                                                 <th>Kebun</th>
+                                                <th>Asal</th>
+                                                <th>Latitude</th>
+                                                <th>Longitude</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -86,8 +89,11 @@
                                                 <td>{{ $item->famili }}</td>
                                                 <td>{{ $item->perbanyak->NAMA }}</td>
                                                 <td>{{ $item->bagian->NAMA }}</td>
+                                                <td>{{ $item->asal }}</td>
                                                 <td>{{ $item->petak->NAMA }}</td>
                                                 <td>{{ $item->kebun->NAMA }}</td>
+                                                <td>{{ $item->latitude }}</td>
+                                                <td>{{ $item->longitude }}</td>
                                                 <td>{{ $item->status }}</td>
                                                 <td>
                                                     <a href="{{ route('tanaman.edit', $item->id) }}" class="btn btn-info btn-sm">
@@ -149,11 +155,11 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        {{-- <div class="form-group">
+                                        <div class="form-group">
                                             <label for="exampleInputEmail1">Asal</label>
                                             <input type="text" class="form-control" id="asal" name="asal"
                                                 placeholder="Masukkan Asal" required>
-                                        </div> --}}
+                                        </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Petak</label>
                                             <select class="form-control" name="petak" id="petak" required>
@@ -189,7 +195,7 @@
                                                 <option value="Mati">Mati</option>
                                             </select>
                                         </div>
-                                        {{-- <div class="form-group">
+                                        <div class="form-group">
                                             <label for="exampleInputEmail1">Latitude</label>
                                             <input type="text" class="form-control" id="lat" name="lat"
                                                 placeholder="Masukkan Latitude" required>
@@ -198,7 +204,7 @@
                                             <label for="exampleInputEmail1">Longitude</label>
                                             <input type="text" class="form-control" id="lon" name="lon"
                                                 placeholder="Masukkan Longitude" required>
-                                        </div> --}}
+                                        </div>
                                         <div class="form-group">
                                             <input type="submit" name="proses" id="proses" value="Tambah"
                                                 class="btn btn-primary">
